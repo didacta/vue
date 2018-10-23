@@ -14,20 +14,19 @@
        <fa-icon icon="chevron-up" v-if="sortBy == genre && sortDirection == 'asc'"/>
         <fa-icon icon="chevron-down" v-if="sortBy == genre && sortDirection == 'desc'" /></a></th>
     </thead>
-<tbody v-for="(song,index) in sortedSongs" v-bind:key="index">
-<tr>
-  <td>{{ song.artist}}</td>
-  <td>{{ song.title}}</td>
-  <td>{{ song.album}}</td>
-  <td>{{ song.genre}}</td>
-</tr>
-</tbody>
-  </table>
+<paginated :items="sortedSongs" />
+ </table>
 </template>
 
 <script>
 import MusicData from '@/assets/list.json'
+
+import PaginatedTableBody from '@/components/PaginatedTableBody'
+
 export default {
+  components: {
+    'paginated': PaginatedTableBody
+  },
   data () {
     return {
       songs: MusicData,
