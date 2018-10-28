@@ -1,10 +1,11 @@
 <template>
   <table class="tabe is-fullwidth is-striped is-hoverable is-narrow">
     <thead>
-      <th style ="width: 30%"><a @click="change_sort('artist')">
+      <th style ="width: 20%"><a @click="change_sort('artist')">
+        Artist
         <fa-icon icon="chevron-up" v-if="sortBy == artist && sortDirection == 'asc'"/>
         <fa-icon icon="chevron-down" v-if="sortBy == artist && sortDirection == 'desc'"/></a></th>
-      <th style ="width: 30%"><a @click="change_sort('title')">Title
+      <th style ="width: 25%"><a @click="change_sort('title')">Title
        <fa-icon icon="chevron-up" v-if="sortBy == title && sortDirection == 'asc'"/>
         <fa-icon icon="chevron-down" v-if="sortBy == title && sortDirection == 'desc'"/></a></th>
       <th style ="width: 20%"><a @click="change_sort('album')">Album
@@ -69,4 +70,19 @@ export default {
 </script>
 
 <style>
+table{
+  background-color: antiquewhite;
+
+  }
+  th{
+    background-color: powderblue;
+    padding: 1%;
+  }
+  tbody{
+    margin-left:5px;
+  }
+  
+  
+
+
 </style>
