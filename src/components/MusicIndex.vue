@@ -20,69 +20,64 @@
 </template>
 
 <script>
-import MusicData from '@/assets/list.json'
+import MusicData from "@/assets/list.json";
 
-import PaginatedTableBody from '@/components/PaginatedTableBody'
+import PaginatedTableBody from "@/components/PaginatedTableBody";
 
 export default {
   components: {
-    'paginated': PaginatedTableBody
+    paginated: PaginatedTableBody
   },
-  data () {
+  data() {
     return {
       songs: MusicData,
-      sortBy: '',
-      sortDirection: 'asc'
-    }
+      sortBy: "",
+      sortDirection: "asc"
+    };
   },
   computed: {
-    sortedSongs () {
-      if (this.sortBy === '') {
-        return this.songs
+    sortedSongs() {
+      if (this.sortBy === "") {
+        return this.songs;
       }
-      let sortModifier = (this.sortDirection === 'asc') ? 1 : -1
+      let sortModifier = this.sortDirection === "asc" ? 1 : -1;
 
       return this.songs.slice().sort((a, b) => {
-        let colA = a[this.sortBy].toUpperCase()
-        let colB = b[this.sortBy].toUpperCase()
+        let colA = a[this.sortBy].toUpperCase();
+        let colB = b[this.sortBy].toUpperCase();
 
         if (colA < colB) {
-          return -1 * sortModifier
+          return -1 * sortModifier;
         }
         if (colA > colB) {
-          return 1 * sortModifier
+          return 1 * sortModifier;
         }
-        return 0
-      })
+        return 0;
+      });
     }
   },
   methods: {
-    change_sort (column) {
-      if (this.sortBy === column && this.sortDirection === 'asc') {
-        this.sortDirection = 'desc'
+    change_sort(column) {
+      if (this.sortBy === column && this.sortDirection === "asc") {
+        this.sortDirection = "desc";
       } else {
-        this.sortDirection = 'asc'
+        this.sortDirection = "asc";
       }
-      this.sortBy = column
+      this.sortBy = column;
     }
   }
-}
+};
 </script>
 
 <style>
-table{
+table {
   background-color: antiquewhite;
-
-  }
-  th{
-    background-color: powderblue;
-    padding: 1%;
-  }
-  tbody{
-    margin-left:5px;
-  }
-  
-  
-
-
+}
+th {
+  background-color: powderblue;
+  padding: 1%;
+}
+tbody {
+  margin-left: 5px;
+}
 </style>
